@@ -17,16 +17,13 @@ function Proposals() {
                 fromBlock: 0,
                 toBlock: "latest"
             })
-        console.log(proposalsEvents)
         const propsLength = proposalsEvents.length
-        console.log(propsLength)
         const propsList = []
         for (let i = 1 ; i < propsLength+1 ; i ++){
             const proposalObj = await contract.methods.getOneProposal(i).call({from : accounts[0]})
             propsList.push(proposalObj[0])
         }
         setProposals(propsList)
-        console.log(propsList)
     }
 
     useEffect(() => {
